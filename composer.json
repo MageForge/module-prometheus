@@ -1,0 +1,19 @@
+{
+    "name": "mageforge/module-prometheus",
+    "description": "Magento module to expose Prometheus metrics",
+    "type": "magento2-module",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {
+        "promphp/prometheus_client_php": "^2.12",
+        "ext-redis": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "MageForge\\Prometheus\\": ""
+        }
+    }
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\App\AreaList">
+        <arguments>
+            <argument name="areas" xsi:type="array">
+                <item name="metrics" xsi:type="array">
+                    <item name="frontName" xsi:type="string">metrics</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="MageForge\Prometheus\Model\MetricsCollectors">
+        <arguments>
+            <argument name="collectors" xsi:type="array">
+                <item name="inventory" xsi:type="object">MageForge\Prometheus\Model\Collector\InventoryMetricsCollector</item>
+                <item name="indexer" xsi:type="object">MageForge\Prometheus\Model\Collector\IndexerMetricsCollector</item>
+                <item name="changelog" xsi:type="object">MageForge\Prometheus\Model\Collector\ChangelogMetricsCollector</item>
+                <item name="db_queue" xsi:type="object">MageForge\Prometheus\Model\Collector\DbQueueMetricsCollector</item>
+                <item name="cron" xsi:type="object">MageForge\Prometheus\Model\Collector\CronMetricsCollector</item>
+                <item name="heartbeat" xsi:type="object">MageForge\Prometheus\Model\Collector\HeartbeatMetricsCollector</item>
+                <item name="changelog_version_id" xsi:type="object">MageForge\Prometheus\Model\Collector\ChangelogMaxVersionIdCollector</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="mageforge_prometheus_clean" xsi:type="object">MageForge\Prometheus\Console\Clean</item>
+                <item name="mageforge_prometheus_collect" xsi:type="object">MageForge\Prometheus\Console\Collect</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
